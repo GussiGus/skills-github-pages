@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gus AJZENBERG</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="ressources/logo.ico">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <button class="burger-menu" aria-label="Ouvrir le menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="galerie.html">Galerie</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="hero-image"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-text">
+            <h1>Gus AJZENBERG</h1>
+        </div>
+    </div>
+
+    <main>
+        <section id="about" class="container">
+            <h2>À propos de moi</h2>
+            <p class="justifie">Je m'appelle Gus..</p>
+            <p class="justifie">Mon objectif est de...</p>
+            <p class="justifie">Autre phrase à dire..</p>
+        </section>
+
+        <section id="projects" class="container">
+            <h2>Mes Projets</h2>
+            <div class="project-list">
+                <div class="project">
+                    <h3>Projet 1</h3>
+                    <p class="justifie">Description projet 1</p>
+                </div>
+                <div class="project">
+                    <h3>Projet 2</h3>
+                    <p class="justifie">Description projet 2</p>
+                </div>
+                <div class="project">
+                    <h3>Projet 3</h3>
+                    <p class="justifie">Description projet 3</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="container">
+            <h2>Contact</h2>
+            <p>N'hésitez pas à me contacter à l'adresse suivante : <a href="mailto:Gustave1908@gmail.com">Gustave1908@gmail.com</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Gus AJZENBERG. Tous droits réservés.</p>
+    </footer>    
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const projects = document.querySelectorAll(".project");
+        
+            function revealProjects() {
+                projects.forEach((project) => {
+                    const projectTop = project.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (projectTop < windowHeight - 100) {
+                        project.classList.add("show");
+                    }
+                });
+            }
+        
+            window.addEventListener("scroll", revealProjects);
+            revealProjects();
+        });
+    </script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

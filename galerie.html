@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gus AJZENBERG - Galerie</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="ressources/logo.ico">
+</head>
+
+<script src="script.js"></script>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <button class="burger-menu" aria-label="Ouvrir le menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="#gallery">Galerie</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="gallery" class="container">
+            <h2>Galerie</h2>
+            <div class="gallery-grid" id="gallery-grid"></div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const gallery = document.getElementById("gallery-grid");
+            const imageCount = 100;
+    
+            for (let i = 1; i <= imageCount; i++) {
+                const img = document.createElement("img");
+                img.src = `ressources/galerie/photo (${i}).jpg`;
+                img.alt = `Photo ${i}`;
+                img.classList.add("gallery-img");
+                img.onerror = function () {
+                    this.remove();
+                };
+                img.onclick = function () {
+                    openModal(this.src);
+                };
+                gallery.appendChild(img);
+            }
+    
+            const modal = document.getElementById("image-modal");
+            const modalImg = document.getElementById("modal-img");
+            const closeModal = document.querySelector(".close");
+    
+            function openModal(src) {
+                modal.style.display = "flex";
+                modalImg.src = src;
+            }
+    
+            closeModal.onclick = function () {
+                modal.style.display = "none";
+            };
+    
+            modal.onclick = function (event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            };
+        });
+    </script>    
+
+    <div id="image-modal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modal-img">
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Gus AJZENBERG. Tous droits réservés.</p>
+    </footer>
+    
+</body>
+</html>
